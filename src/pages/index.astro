@@ -1,0 +1,31 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>A perfect pair</h1>
+      <p>
+        Bring the simple and clean <a href="https://bearblog.dev/">Bear Blog</a>
+        theme to your <a href="https://astro.build/">Astro</a> site. Astro's excellent
+        developer experience and Bear Blog's user-friendly design together create
+        a seamless experience.
+      </p>
+      <p>Give it a try now!</p>
+      <h2>Features</h2>
+      <ul>
+        <li>Make use of Bear Blog's amazing styling</li>
+      </ul>
+    </main>
+    <Footer />
+  </body>
+</html>
