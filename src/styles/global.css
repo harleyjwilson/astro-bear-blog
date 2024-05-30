@@ -91,9 +91,13 @@ img {
   max-width: 100%;
 }
 
+pre {
+  padding: 20px;
+  /* padding: 20px 20px 0 20px; */
+}
+
 code {
   font-family: monospace;
-  padding: 2px;
   background-color: var(--code-background-color);
   color: var(--code-color);
   border-radius: 3px;
@@ -109,6 +113,12 @@ blockquote {
 footer {
   padding: 25px 0;
   text-align: center;
+}
+
+time {
+  font-family: monospace;
+  font-style: normal;
+  font-size: 15px;
 }
 
 .title:hover {
