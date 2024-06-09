@@ -4,3 +4,4 @@
 export const SITE_TITLE = "Astro Bear";
 export const SITE_DESCRIPTION = "Astro Bear Blog Theme!";
 export const SITE_URL = "https://example.com";
+export const SEARCH_URL = "https://duckduckgo.com/"
