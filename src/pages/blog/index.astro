@@ -9,6 +9,12 @@ import FormattedDate from "../../components/FormattedDate.astro";
 const posts = (await getCollection("blog")).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
+
+const uniqueTags = [
+  ...new Set(
+    posts.flatMap((post) => post.data.tags).filter((tag) => tag !== undefined)
+  ),
+];
 ---
 
 <!doctype html>
@@ -33,6 +39,15 @@ const posts = (await getCollection("blog")).sort(
           ))
         }
       </ul>
+      <div class="tags">
+        {
+          uniqueTags.map((tag) => (
+            <a class="tag" href={`/tags/${tag}/`}>
+              #{tag}
+            </a>
+          ))
+        }
+      </div>
     </main>
     <Footer />
   </body>

@@ -161,3 +161,20 @@ ul.blog-posts li span {
 ul.blog-posts li a:visited {
   color: var(--visited-color);
 }
+
+/* tags */
+.tags {
+  font-size: 0.83rem;
+}
+
+.tag {
+  margin-right: 0.25rem;
+}
+
+.filter-title {
+  margin-bottom: 0;
+}
+
+.remove-filter {
+  font-size: 0.83rem;
+}
