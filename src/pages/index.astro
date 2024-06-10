@@ -1,0 +1,45 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Nav from "../components/Nav.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="Home" description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header>
+      <Nav />
+    </Header>
+    <main>
+      <h1>Welcome to Astro Bear Blog Theme</h1>
+      <h2>A perfect pairing</h2>
+      <p>
+        Bring the simple and clean <a href="https://bearblog.dev/">Bear Blog</a>
+        theme to your <a href="https://astro.build/">Astro</a> site. Astro's excellent
+        developer experience and Bear Blog's user-friendly design together create
+        a seamless website.
+      </p>
+      <p>Give it a try now!</p>
+      <h3>Features</h3>
+      <ul>
+        <li>Make use of Bear Blog's amazing design</li>
+        <li>Small webpage sizes (~290B for this page)</li>
+        <li>
+          Add blog posts by adding the Markdown files in the <code
+            >src/content/blog</code
+          > directory
+        </li>
+        <li>SEO-friendly with canonical URLs and OpenGraph data</li>
+        <li>Filter your blog posts by using tags</li>
+        <li>Use DuckDuckGo to search your blog</li>
+        <li>Automatically generated RSS feed and sitemap</li>
+      </ul>
+    </main>
+    <Footer />
+  </body>
+</html>

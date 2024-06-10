@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Header from "../../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import Nav from "../../components/Nav.astro";
+
+export async function getStaticPaths() {
+  const allPosts = (await getCollection("blog")).sort(
+    (b, a) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  );
+
+  const uniqueTags = [
+    ...new Set(
+      allPosts
+        .flatMap((post) => post.data.tags)
+        .filter((tag) => tag !== undefined)
+    ),
+  ];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter(
+      (post) => post.data.tags && post.data.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={tag} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header>
+      <Nav />
+    </Header>
+    <main>
+      <h3 class="filter-title">Filtering for "{tag}"</h3>
+      <a href="/blog" class="remove-filter">Remove filter</a>
+      <ul class="blog-posts">
+        {
+          posts.map((post) => (
+            <li>
+              <span>
+                <i>
+                  <FormattedDate date={post.data.pubDate} />
+                </i>
+              </span>
+              <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+    <Footer />
+  </body>
+</html>

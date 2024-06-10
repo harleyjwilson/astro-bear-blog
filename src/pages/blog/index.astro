@@ -1,0 +1,59 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import SearchBar from "../../components/SearchBar.astro";
+import Nav from "../../components/Nav.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (b, a) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+
+const uniqueTags = [
+  ...new Set(
+    posts.flatMap((post) => post.data.tags).filter((tag) => tag !== undefined)
+  ),
+].sort();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="Blog" description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header>
+      <Nav />
+    </Header>
+    <main>
+      <SearchBar />
+      <ul class="blog-posts">
+        {
+          posts.map((post) => (
+            <li>
+              <span>
+                <i>
+                  <FormattedDate date={post.data.pubDate} />
+                </i>
+              </span>
+              <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="tags">
+        {
+          uniqueTags.map((tag) => (
+            <a class="tag" href={`/tags/${tag}/`}>
+              #{tag}
+            </a>
+          ))
+        }
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

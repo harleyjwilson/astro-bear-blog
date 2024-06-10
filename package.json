@@ -1,0 +1,19 @@
+{
+  "name": "astro-bear-blog-theme",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.6",
+    "@astrojs/sitemap": "^3.1.5",
+    "astro": "^4.9.2",
+    "markdown-it": "^14.1.0",
+    "sanitize-html": "^2.13.0"
+  }
+}

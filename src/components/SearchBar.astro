@@ -1,0 +1,8 @@
+---
+import { SEARCH_URL, SITE_URL } from "../consts";
+---
+
+<form class="search" method="GET" action={SEARCH_URL} target="_blank">
+  <input type="search" name="q" placeholder="Search..." />
+  <input type="hidden" name="sites" value={SITE_URL} />
+</form>
